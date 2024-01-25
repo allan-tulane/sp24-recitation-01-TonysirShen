@@ -20,6 +20,16 @@ def binary_search(mylist, key):
 	return _binary_search(mylist, key, 0, len(mylist)-1)
 
 def _binary_search(mylist, key, left, right):
+  mid = (left + right) // 2
+  if mylist[mid] == key:
+    return mid
+  elif left == right:
+    return -1
+  elif(mylist[mid] < key):
+    return _binary_search(mylist, key, mid + 1, right)
+  elif(mylist[mid] > key):
+    return _binary_search(mylist, key, left, mid - 1)
+    
 	"""
 	Recursive implementation of binary search.
 
