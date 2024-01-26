@@ -53,7 +53,7 @@ def time_search(search_fn, mylist, key):
   init = time.time()
   search_fn(mylist, key)
   end = time.time()
-  return (end - init) * 1000
+  return (end - init) * 1000.0
 """
 	Return the number of milliseconds to run this
 	search function on this list.
@@ -78,8 +78,8 @@ def time_search(search_fn, mylist, key):
 def compare_search(sizes=[1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7]):
   tuple_l = [];
   for n in sizes:
-    linear_s_t = time_search(linear_search, list(range(n)), -1)
-    binary_s_t = time_search(binary_search, list(range(n)), -1)
+    linear_s_t = time_search(linear_search, list(range(int(n))), -1)
+    binary_s_t = time_search(binary_search, list(range(int(n))), -1)
     tuple_l.append((n,linear_s_t,binary_s_t))
   return tuple_l
 """
@@ -107,3 +107,4 @@ def print_results(results):
 							floatfmt=".3f",
 							tablefmt="github"))
 
+print_results(compare_search())
